@@ -2,10 +2,12 @@
 
 ## 學習 Vue 的基礎語法
 - Instance
-- v-enter
-- v-enter-active
-- v-leave
-- v-leave-active
+- contructor
+- extend
+- data
+- vm.$data
+- vm.$el
+- vm.$watch
 
 ## 範例
 
@@ -54,3 +56,28 @@
 
 5. Instance Lifecycle
     <img src=lifecycle.png />
+
+6. Lifecycle state
+    ```
+    // we can add the callback function for the lifecycle state
+
+    var app = new Vue({
+      el: "#app",
+      data: {
+        text: 'vue lifecycle'
+      },
+      created: function () {
+        // `this` points to the app instance
+        console.log('created with text: ' + this.text)
+      },
+      beforeMount: function () {
+        console.log('beforeMount')
+      },
+      beforeDestory: function () {
+        console.log('beforeDestory')
+      },
+      destroyed: function () {
+        console.log('destroyed')
+      }
+    })
+    ```
