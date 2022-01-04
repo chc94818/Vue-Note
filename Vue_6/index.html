@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Vue Note 6</title>
+    </head>
+    <body>
+      <div id="app">
+        <button v-on:click="reverseMessage">
+          reverseMessage
+        </button>
+        <div v-once>
+          <span>with v-once</span>
+          <br>
+          <span>{{message}}</span>
+        </div>
+        <div>
+          <span>without v-once</span>
+          <br>
+          <span>{{message}}</span>
+        </div>
+        <div v-html="rawHtml"></div>
+        <div>{{rawHtml}}</div>
+        <div>{{ showYes && 'YES' }}</div>
+        <div>{{ !showYes ? 'YES' : 'NO' }}</div>
+        <div>{{ number + 1 }}</div>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+      <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+              message: "message will not be toggled by the button with v-once",
+              rawHtml: "<p>insert raw html is dangerous</p>",
+              showYes: true,
+              number: 1
+            },
+            methods: {
+                reverseMessage: function () {
+                  this.message = this.message.split("").reverse().join("")
+                }
+            },
+        })
+    </script>
+    </body>
+</html>
