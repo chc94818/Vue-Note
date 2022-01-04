@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Hello World</title>
+    </head>
+    <body>
+      <div id="app">
+        <div v-bind:title="message">
+            Hover your mouse to see dynamically date!
+        </div>
+        <div v-if="showDiv">
+            show this line
+        </div>
+        <div v-if="hideDiv">
+            not to show this line
+        </div>
+        <ol>
+            <li v-for="item in list">
+                {{ item.text }}
+            </li>
+        </ol>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+      <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'You loaded this page on ' + new Date(),
+                showDiv: true,
+                hideDiv: false,
+                list: [
+                    { text: 'Vue list 1' },
+                    { text: 'Vue list test 2' },
+                    { text: 'Vue list hello 3' }
+                ]
+            }
+        })
+    </script>
+    </body>
+</html>
