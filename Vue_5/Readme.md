@@ -1,12 +1,13 @@
-## Vue Note 5
-學習Vue 的基礎語法
+# Vue Note 5
+
+## 學習 Vue 的基礎語法
 - Instance
 - v-enter
 - v-enter-active
 - v-leave
 - v-leave-active
 
-### 範例
+## 範例
 
 1. 建構子，及其參數 option (options 的屬性有: data, template, element to mount on(el), methods, lifecycle callbacks ...)
     ```
