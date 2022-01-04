@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Vue Note 5</title>
+    </head>
+    <body>
+      <div id="app">
+        <div id="app">
+            {{text}}
+        </div>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+      <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+              text: 'vue lifecycle'
+            },
+            created: function () {
+              // `this` points to the app instance
+              console.log('created with text: ' + this.text)
+            },
+            beforeMount: function () {
+              console.log('beforeMount')
+            },
+            beforeDestory: function () {
+              console.log('beforeDestory')
+            },
+            destroyed: function () {
+              console.log('destroyed')
+            }
+        })
+    </script>
+    </body>
+</html>
