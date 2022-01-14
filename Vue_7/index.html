@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Vue Note 7</title>
+    </head>
+    <body>
+      <div id="app">
+        <button v-on:click="show = !show">
+          Toggle
+        </button>
+        <div v-if="show">this div can be toggled to hidden</div>
+        <div >Original message: "{{ message }}"</div>
+        <div>Computed inline js: {{ message.split('').reverse().join('') }}</div>
+        <div>Computed property: "{{ reversedMessage }}"</div>
+        <div>Reversed method message: "{{ reverseMessageMethod() }}"</div>
+        <div>Computed date: "{{ nowDate }}"</div>
+        <div>Computed method: "{{ nowDateMethod() }}"</div>
+        <div>FullName: "{{ fullName }}"</div>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+      <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+              message: "message will not be toggled by the button with v-once",
+              show: true,
+              firstName: 'Chia',
+              lastName: 'Chang',
+            },
+            computed: {
+              reversedMessage: function () {
+                return this.message.split('').reverse().join('')
+              },
+              nowDate: function () {
+                return Date.now()
+              },
+              fullName: {
+                // getter
+                get: function () {
+                  return this.firstName + ' ' + this.lastName
+                },
+                // setter
+                set: function (newValue) {
+                  var names = newValue.split(' ')
+                  this.firstName = names[0]
+                  this.lastName = names[names.length - 1]
+                }
+              }
+            },
+            methods: {
+              reverseMessageMethod: function () {
+                return this.message.split('').reverse().join('')
+              },
+              nowDateMethod: function () {
+                return Date.now()
+              }
+            }
+        })
+    </script>
+    </body>
+</html>
