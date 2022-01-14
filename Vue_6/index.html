@@ -24,6 +24,14 @@
         <div>{{ showYes && 'YES' }}</div>
         <div>{{ !showYes ? 'YES' : 'NO' }}</div>
         <div>{{ number + 1 }}</div>
+        <div>
+          <a v-on:click.prevent href="https://vuejs.org/">v-on:click vue site</a>
+        </div>
+        <div>
+          <a @click.prevent href="https://vuejs.org/">@click vue site2</a>
+        </div>
+        <div v-bind:id="rawId |　idFormatter">process the id to add - between numbers and alphabets</div>
+        <div>{{capitalizeMessage | capitalize}}</div>
       </div>
       <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
       <script>
@@ -31,15 +39,38 @@
             el: "#app",
             data: {
               message: "message will not be toggled by the button with v-once",
+              capitalizeMessage: 'capitalize the first char',
               rawHtml: "<p>insert raw html is dangerous</p>",
               showYes: true,
-              number: 1
+              number: 1,
+              rawId: 'abc123'
             },
             methods: {
                 reverseMessage: function () {
-                  this.message = this.message.split("").reverse().join("")
+                  this.message = this.message.split("").reverse().join("");
                 }
             },
+            filters: {
+              capitalize: function (value) {
+                if (!value) return '';
+                value = value.toString();
+                return value.charAt(0).toUpperCase() + value.slice(1);
+              },
+              idFormatter: function (value) {
+                if (!value) return '';
+                let formattedId = '';
+                rawId = value.toString();
+                let previousChar = rawId[0];
+                [...rawId].forEach(char => {
+                  if(isNaN(char) !== isNaN(previousChar)) {
+                    formattedId = formattedId.concat('-');
+                  }
+                  formattedId= formattedId.concat(char);
+                  previousChar = char
+                });
+                return formattedId;
+              }
+            }
         })
     </script>
     </body>

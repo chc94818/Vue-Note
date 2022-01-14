@@ -4,6 +4,9 @@
 - v-once
 - v-html
 - Javascript
+- v-on:{event} 縮寫
+- v-bind:{attr} 縮寫
+- filter
 
 ## 範例
 
@@ -42,4 +45,30 @@
 
     // if statement won't work, use ternary expressions instead
     {{ if (true) { return message } }}
+    ```
+
+4. `v-on:{event}.prevent="{event}"` 部分事件，例如 onClick、onSubmit，能夠加上綴 `.prevent` 來自動加上 `event.preventDefault()` 到事件處理中
+
+5. `v-on:{event}` 可以縮寫成 `@{event}`，例如 `@click`
+
+6. `v-bind:{attr}` 可以縮寫成 `:{attr}`，例如 `:href`
+
+7. filter 可以用來對資料前處理
+    ```
+    // use `|` to apply the filter
+    <div>{{capitalizeMessage | capitalize}}</div>
+    //
+    new Vue({
+        el: "#app",
+        data: {
+            capitalizeMessage: 'capitalize the first char',
+        },
+        filters: {
+            capitalize: function (value) {
+            if (!value) return ''
+            value = value.toString()
+            return value.charAt(0).toUpperCase() + value.slice(1)
+            }
+        }
+    })
     ```
